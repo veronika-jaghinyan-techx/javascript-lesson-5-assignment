@@ -22,10 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
 				"x-api-key": "reqres-free-v1",
 			};
 
-			const response = await fetch("https://reqres.in/api/users?delay=1", {
+			const url = "https://reqres.in/api/users?page=1";
+
+			const response = await fetch(url, {
 				method: "GET",
 				headers: withHeader ? headers : undefined,
 			});
+
+			if (!response.ok) {
+				throw new Error(`Network response was not ok: ${response.status}`);
+			}
 
 			const data = await response.json();
 
