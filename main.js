@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				"x-api-key": "reqres-free-v1",
 			};
 
-			const url = "https://reqres.in/api/users?page=1";
+			const url = "https://reqres.in/api/users?delay=1";
 
 			const response = await fetch(url, {
 				method: "GET",
@@ -36,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			const data = await response.json();
 
 			await wait(1000);
+
+			console.log("Response data:", data);
 
 			const usersList = document.createElement("ul");
 			usersList.classList.add("users-list");
